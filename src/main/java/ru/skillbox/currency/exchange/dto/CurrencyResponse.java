@@ -5,14 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+@AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class CurrencyDto {
-    private Long id;
-    private String name;
-    private Long nominal;
-    private Double value;
-    private Long isoNumCode;
+public class CurrencyResponse {
+    private boolean result;
+    private CurrencyData data;
+
 }

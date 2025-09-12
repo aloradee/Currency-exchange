@@ -7,12 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class CurrencyDto {
-    private Long id;
+@NoArgsConstructor
+public class ShortCurrency {
     private String name;
-    private Long nominal;
     private Double value;
-    private Long isoNumCode;
 }
