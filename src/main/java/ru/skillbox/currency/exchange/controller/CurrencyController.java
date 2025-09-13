@@ -6,13 +6,26 @@ import org.springframework.web.bind.annotation.*;
 import ru.skillbox.currency.exchange.dto.CurrencyDto;
 import ru.skillbox.currency.exchange.dto.CurrencyResponse;
 import ru.skillbox.currency.exchange.service.CurrencyService;
+import ru.skillbox.currency.exchange.service.impl.CbrCurrencyServiceImpl;
 import ru.skillbox.currency.exchange.service.impl.CurrencyServiceImpl;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/currency")
 public class CurrencyController {
+    private final CbrCurrencyServiceImpl cbrCurrencyService;
     private final CurrencyService service;
+
+    @PostMapping("/update")
+    public ResponseEntity<String> updateCurrencies() {
+        try {
+            cbrCurrencyService.updateCurrenciesFromCbr();
+            return ResponseEntity.ok("Данные о валютах успешно обновлены");
+        } catch (Exception exception) {
+            return ResponseEntity.internalServerError()
+                    .body("Ошибка при обновлении данных: " + exception.getMessage());
+        }
+    }
 
     @GetMapping(value = "/")
     ResponseEntity<CurrencyResponse> getAllCurrency() {

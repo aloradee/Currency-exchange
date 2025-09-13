@@ -15,4 +15,5 @@ public class CurrencyDto {
     private Long nominal;
     private Double value;
     private Long isoNumCode;
+    private String isoCharCode;
 }
